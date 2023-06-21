@@ -1,3 +1,5 @@
+import java.sql.Statement;
+import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,9 +23,28 @@ public class Conexion {
 		return conexion;
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Conexion c= new Conexion();
-		c.conectar();
+		Connection cn=null;
+		Statement stm=null;
+		ResultSet rs=null;
+		try{
+			cn=c.conectar();
+			stm=cn.createStatement();
+			rs=stm.executeQuery("SELECT * FROM fixture_det");
+			while(rs.next()){
+				int id=rs.getInt(1);
+				int a=rs.getInt(2);
+				int b=rs.getInt(3);
+				String d=rs.getString(4);
+				System.out.println(id+" "+a+" "+b+" "+d+" ");
+
+			}
+			
+		}catch(SQLException e){
+
+		}
+
+
 	}
 
 }
