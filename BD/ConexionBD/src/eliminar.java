@@ -9,13 +9,12 @@ public class eliminar {
 		Conexion c1= new Conexion();
 		Connection cn=null;
 		PreparedStatement stm=null;
-		ResultSet rs=null;
 		try{
 			cn=c1.conectar();
 			stm=cn.prepareStatement("DELETE FROM arbitros WHERE ArbCod=?");
-			stm.setInt(1, 7);
+			stm.setInt(1, 102);
 			stm.executeUpdate();
-			System.out.println("se a elimnado nuevo arbitro un  arbitro los datos");
+			System.out.println("se a elimnado el arbitro correctamente");
 			
 		}catch(SQLException e){
 			System.out.println("error");
